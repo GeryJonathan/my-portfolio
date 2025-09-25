@@ -1,71 +1,67 @@
-"use client";
-import { useState } from "react";
-import Image from "next/image";
+import portfolio from "@/data/portfolio.json";
 
-export default function Page() {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-
-  const sendMessage = async () => {
-    if (!input) return;
-    const userMsg = { role: "user", text: input };
-    setMessages((prev) => [...prev, userMsg]);
-
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: input }),
-    });
-    const data = await res.json();
-
-    setMessages((prev) => [...prev, userMsg, { role: "bot", text: data.reply }]);
-    setInput("");
-  };
-
+export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col items-center p-6 bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="max-w-2xl text-center mt-10">
-        <Image src="/profile.jpg" alt="Profile" width={120} height={120} className="rounded-full mx-auto" />
-        <h1 className="text-4xl font-bold mt-4">Hi, I’m Gery 👋</h1>
-        <p className="mt-2 text-gray-600">
-          Fresh IT graduate with interest in Data Science & Cybersecurity.
-        </p>
-      </div>
+      <section className="flex flex-col items-center justify-center text-center py-20 px-6 bg-gradient-to-b from-blue-600 to-blue-500 text-white">
+        <h1 className="text-5xl font-bold mb-4">{portfolio.name}</h1>
+        <h2 className="text-2xl font-medium mb-6">{portfolio.title}</h2>
+        <p className="max-w-2xl text-lg opacity-90">{portfolio.about}</p>
+      </section>
 
-      {/* Projects Section */}
-      <div className="max-w-3xl mt-10 w-full">
-        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-        <ul className="list-disc pl-6 space-y-2">
-          <li>💾 Banking Transaction ETL Automation (UiPath + MySQL)</li>
-          <li>🤖 Thesis: Deepfake Video Detection with CNN</li>
-          <li>📊 Data Visualization Dashboard (Python + Streamlit)</li>
-        </ul>
-      </div>
+      <div className="max-w-5xl mx-auto px-6 py-12 space-y-12">
+        {/* Skills */}
+        <section>
+          <h2 className="text-3xl font-semibold mb-4 text-gray-800">Skills</h2>
+          <ul className="flex flex-wrap gap-3">
+            {portfolio.skills.map((skill, i) => (
+              <li
+                key={i}
+                className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+              >
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      {/* Chatbot Widget */}
-      <div className="fixed bottom-6 right-6 w-80 bg-white border rounded-lg shadow-lg p-3">
-        <div className="h-48 overflow-y-auto mb-2">
-          {messages.map((m, i) => (
-            <div key={i} className={m.role === "user" ? "text-right" : "text-left"}>
-              <p className={`p-2 my-1 rounded ${m.role === "user" ? "bg-blue-100" : "bg-gray-100"}`}>
-                {m.text}
-              </p>
-            </div>
-          ))}
-        </div>
-        <div className="flex">
-          <input
-            className="flex-grow border rounded p-2"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask me anything..."
-          />
-          <button onClick={sendMessage} className="ml-2 bg-blue-500 text-white px-3 rounded">
-            Send
-          </button>
-        </div>
+        {/* Projects */}
+        <section>
+          <h2 className="text-3xl font-semibold mb-6 text-gray-800">Projects</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {portfolio.projects.map((project, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition"
+              >
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{project.title}</h3>
+                <p className="text-gray-600 mb-3">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tools.map((tool, j) => (
+                    <span
+                      key={j}
+                      className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="text-center py-12">
+          <p className="text-lg text-gray-700 mb-4">
+            Want to know more about me?
+          </p>
+          <p className="text-blue-600 font-medium">
+            💬 Ask my chatbot in the corner →
+          </p>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

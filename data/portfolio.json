@@ -1,0 +1,32 @@
+{
+  "name": "Gery Jonathan",
+  "title": "Fresh IT Graduate",
+  "about": "Passionate about Data Science, Cybersecurity, and Backend Development.",
+  "skills": [
+    "Data Science",
+    "Cybersecurity",
+    "Automation",
+    "Backend Development",
+    "Python",
+    "SQL",
+    "UiPath RPA",
+    "Next.js"
+  ],
+  "projects": [
+    {
+      "title": "Banking Transaction ETL Automation",
+      "tools": ["UiPath", "MySQL"],
+      "description": "Automated ~9.5M transactions by building an ETL pipeline that converts raw Excel to CSV and loads into MySQL, reducing manual effort by 80%."
+    },
+    {
+      "title": "Thesis: Deepfake Video Detection",
+      "tools": ["Python", "CNN"],
+      "description": "Developed an efficient deepfake detection system that balances accuracy and computational performance."
+    },
+    {
+      "title": "Data Visualization Dashboard",
+      "tools": ["Python", "Streamlit"],
+      "description": "Built an interactive analytics dashboard for data insights and reporting."
+    }
+  ]
+}
