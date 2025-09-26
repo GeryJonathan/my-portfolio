@@ -1,32 +1,101 @@
 {
   "name": "Gery Jonathan",
   "title": "Fresh IT Graduate",
-  "about": "Passionate about Data Science, Cybersecurity, and Backend Development.",
+  "about": "Passionate about Data Science, Cybersecurity, Backend Development, and Machine Learning. Experienced in predictive modeling, NLP, mobile apps, and UI/UX design.",
+  "contact": {
+    "email": "geryjonathan21@gmail.com",
+    "github": "https://github.com/GeryJonathan",
+    "linkedin": "https://www.linkedin.com/in/gery-jonathan/"
+  },
   "skills": [
     "Data Science",
     "Cybersecurity",
     "Automation",
     "Backend Development",
+    "Machine Learning",
+    "Deep Learning",
+    "Mobile Development (Flutter)",
+    "UI/UX Design",
     "Python",
     "SQL",
-    "UiPath RPA",
-    "Next.js"
+    "TensorFlow",
+    "Streamlit",
+    "Laravel",
+    "Next.js",
+    "Git/GitHub"
   ],
   "projects": [
     {
       "title": "Banking Transaction ETL Automation",
       "tools": ["UiPath", "MySQL"],
-      "description": "Automated ~9.5M transactions by building an ETL pipeline that converts raw Excel to CSV and loads into MySQL, reducing manual effort by 80%."
+      "description": "Automated ~9.5M transactions by building an ETL pipeline that converts raw Excel to CSV and loads into MySQL, reducing manual effort by 80%.",
+      "image": "/project1.jpg"
     },
     {
       "title": "Thesis: Deepfake Video Detection",
       "tools": ["Python", "CNN"],
-      "description": "Developed an efficient deepfake detection system that balances accuracy and computational performance."
+      "description": "Developed an efficient deepfake detection system that balances accuracy and computational performance.",
+      "image": "/project2.jpg"
     },
     {
       "title": "Data Visualization Dashboard",
       "tools": ["Python", "Streamlit"],
-      "description": "Built an interactive analytics dashboard for data insights and reporting."
+      "description": "Built an interactive analytics dashboard for data insights and reporting.",
+      "image": "/project3.jpg"
+    },
+    {
+      "title": "Lit Finder (Bangkit Capstone)",
+      "tools": ["FastAPI", "TensorFlow", "Android"],
+      "description": "Personalized book recommendation app using content-based and collaborative filtering with fine-tuned embeddings.",
+      "image": "/project4.jpg",
+      "link": "https://github.com/LitFinder"
+    },
+    {
+      "title": "Pokedex (Mobile App)",
+      "tools": ["Flutter", "TensorFlow Lite"],
+      "description": "Pokédex mobile app that identifies Pokémon using a MobileNetV2 model with ~93% accuracy.",
+      "image": "/project5.jpg",
+      "link": "https://github.com/GeryJonathan/Pokedex"
+    },
+    {
+      "title": "Beijing Air Quality Dashboard",
+      "tools": ["Python", "Streamlit"],
+      "description": "Analyzed Beijing air quality data and built a Streamlit dashboard for visualization and insights.",
+      "image": "/project6.jpg",
+      "link": "https://github.com/GeryJonathan/Beijing-Air-Quality-Dashboard---Streamlit"
+    },
+    {
+      "title": "Cardiovascular Disease Analysis",
+      "tools": ["Python", "Pandas", "Matplotlib"],
+      "description": "Analyzed 70,000 patient records to understand key health factors influencing cardiovascular disease.",
+      "image": "/project7.jpg"
+    },
+    {
+      "title": "Boston Housing Price Prediction",
+      "tools": ["Python", "Scikit-learn"],
+      "description": "Built and fine-tuned ML models for predicting housing prices with a low RMSE of 3.278.",
+      "image": "/project8.jpg"
+    },
+    {
+      "title": "Rujak (Web Development)",
+      "tools": ["Laravel", "MySQL"],
+      "description": "Developed backend features for a tax payment app, including CRUD, quiz, and comment system.",
+      "image": "/project9.jpg",
+      "link": "https://github.com/erligurning03/WebPajakPKM"
+    },
+    {
+      "title": "InFinIt (UI/UX Design)",
+      "tools": ["Figma"],
+      "description": "Mobile app prototype aligned with UN SDGs, designed for Gemastik 2023 competition.",
+      "image": "/project10.jpg",
+      "link": "https://www.figma.com/proto/Ipa9Ce5BaHzEDQyTsobK77/InFinIt"
+    },
+    {
+      "title": "Ekonomi Plus (UI/UX Design)",
+      "tools": ["Figma"],
+      "description": "Prototype app for economic empowerment and financial management aimed at reducing poverty.",
+      "image": "/project11.jpg",
+      "link": "https://www.figma.com/proto/7oZdLJTImyvImAtcLnC1qZ/DI-TUBES-KEL-3"
     }
   ]
 }
