@@ -26,76 +26,243 @@
   ],
   "projects": [
     {
-      "title": "Banking Transaction ETL Automation",
-      "tools": ["UiPath", "MySQL"],
-      "description": "Automated ~9.5M transactions by building an ETL pipeline that converts raw Excel to CSV and loads into MySQL, reducing manual effort by 80%.",
-      "image": "/project1.jpg"
+      "title": "Deepfake Detection on Faces in Video",
+      "category": "Data Science",
+      "image": "thesis/thesis_home.png",
+      "description": "Undergraduate thesis project focused on developing a deepfake detection system combining EfficientNet-B1 and Cross-Attention Multi-Scale Vision Transformer. Implemented as a Flask-based web application with interactive upload, detection, and evaluation features.",
+      "details": "This thesis addresses the growing threat of deepfake technology to digital security. A hybrid architecture was designed, integrating EfficientNet-B1 for feature extraction with a Cross-Attention Multi-Scale Vision Transformer for context modeling. The system was trained on FaceForensics++ and Celeb-DF(v2), and tested on DeepFakeDetection (DFD) to evaluate generalization. The web-based system, built with Flask, allows users to upload videos, analyze them, and view detection results with confidence scores, confusion matrices, and batch evaluation. Results achieved an AUC of 92.35% and a video-level F1-score of 83.62%, while maintaining high computational efficiency (0.349 GFLOPs per frame).",
+      "tools": [
+        "Python",
+        "Flask",
+        "EfficientNet-B1",
+        "Vision Transformer (Cross-ViT)",
+        "TensorFlow / PyTorch",
+        "FaceForensics++",
+        "Celeb-DF(v2)",
+        "DeepFakeDetection (DFD)",
+        "HTML/CSS/JS"
+      ],
+      "gallery": [
+        "thesis/thesis_home.png",
+        "thesis/thesis_results.png",
+        "thesis/thesis_confusion.png"
+      ],
+      "link": "https://drive.google.com/file/d/1tRrIaIZx0GX8YRO7T8LGp05gJtAQMxHs/view?usp=drive_link",
+      "github": "https://github.com/GeryJonathan/Deepfake-Detection",
+      "youtube": null
     },
     {
-      "title": "Thesis: Deepfake Video Detection",
-      "tools": ["Python", "CNN"],
-      "description": "Developed an efficient deepfake detection system that balances accuracy and computational performance.",
-      "image": "/project2.jpg"
-    },
-    {
-      "title": "Data Visualization Dashboard",
-      "tools": ["Python", "Streamlit"],
-      "description": "Built an interactive analytics dashboard for data insights and reporting.",
-      "image": "/project3.jpg"
+      "title": "Analisis Polarisasi Pemilu 2024 di Media Sosial X",
+      "category": "Data Science",
+      "image": "satria_data/pemilu_cover.png",
+      "description": "Big Data Challenge project from the Satria Data 2024 competition, analyzing polarization in the 2024 Indonesian Presidential Election debates using Social Network Analysis, Topic Modeling, and Aspect-Based Sentiment Analysis with IndoBERT.",
+      "details": "This project was developed as part of the Satria Data 2024 competition, Big Data Challenge division. It investigates public opinion polarization on media sosial X (Twitter) during the 3rd and 4th presidential debates of Pemilu 2024. It combines Social Network Analysis (SNA), Latent Dirichlet Allocation (LDA) topic modeling, and Aspect-Based Sentiment Analysis (ABSA) to identify influential actors, trending topics, and sentiment distribution across candidates. Results showed strong polarization patterns, with IndoBERT achieving ~82% accuracy in sentiment classification. Insights support political campaign teams in shaping more effective strategies and help the public better understand discourse dynamics.",
+      "tools": [
+        "Python",
+        "Pandas",
+        "Gephi",
+        "Latent Dirichlet Allocation",
+        "VADER",
+        "IndoBERT",
+        "Matplotlib"
+      ],
+      "gallery": [
+        "satria_data/sna.png",
+        "satria_data/topic_modeling.png",
+        "satria_data/sentiment_analysis.png",
+        "satria_data/melekpolitik.png"
+      ],
+      "link": null,
+      "github": null,
+      "youtube": null
     },
     {
       "title": "Lit Finder (Bangkit Capstone)",
-      "tools": ["FastAPI", "TensorFlow", "Android"],
-      "description": "Personalized book recommendation app using content-based and collaborative filtering with fine-tuned embeddings.",
-      "image": "/project4.jpg",
-      "link": "https://github.com/LitFinder"
+      "category": "Data Science",
+      "tools": [
+        "Python",
+        "FastAPI",
+        "TensorFlow",
+        "ChromaDB",
+        "Google Cloud Platform (GCP)",
+        "Docker"
+      ],
+      "description": "Developed the core machine learning recommendation system for a book discovery app, using both Content-Based and Collaborative Filtering techniques.",
+      "details": "As the Machine Learning engineer responsible for the recommendation system, I preprocessed and merged the Amazon Book Dataset from Kaggle, totaling 174,295 samples. I implemented a Content-Based Filtering model by generating embeddings from book metadata (title, author, genres) and storing them in ChromaDB for efficient similarity searches. Additionally, I developed a Collaborative Filtering model by creating a user-book interaction matrix and using cosine similarity for book recommendations and an SVD model for user-based suggestions. The entire system was served via a RESTful API built with Python and FastAPI, which I then containerized and deployed on Google Cloud Platform.",
+      "image": "/litfinder/Cover.png",
+      "gallery": [
+        "/litfinder/content-based-filtering.png",
+        "/litfinder/collaborative-filtering-user.png",
+        "/litfinder/collaborative-filtering-book.png",
+        "/litfinder/UI.png",
+        "/litfinder/cloud-architecture.png",
+        "/litfinder/fastapi-endpoints.png"
+      ],
+      "link": "https://github.com/LitFinder",
+      "github": null,
+      "youtube": null
     },
     {
-      "title": "Pokedex (Mobile App)",
-      "tools": ["Flutter", "TensorFlow Lite"],
-      "description": "Pokédex mobile app that identifies Pokémon using a MobileNetV2 model with ~93% accuracy.",
-      "image": "/project5.jpg",
-      "link": "https://github.com/GeryJonathan/Pokedex"
+      "title": "Pokédex Classifier 📸",
+      "category": "Data Science",
+      "tools": [
+        "Flutter",
+        "TensorFlow Lite",
+        "MobileNetV2",
+        "PokéAPI",
+        "Provider",
+        "Shared Preferences"
+      ],
+      "description": "A mobile application built with Flutter and a custom-trained TensorFlow Lite model to identify Pokémon from the camera or gallery, with a persistent offline Pokédex catalog.",
+      "details": "This project leverages deep learning to create a real-world Pokédex experience. The app uses a quantized MobileNetV2 model trained on the original 151 Pokémon, deployed fully offline via TensorFlow Lite. It supports both camera and gallery input, only identifies when confidence ≥80%, and includes an engaging Pokéball-style capture animation. A persistent Pokédex stores captured Pokémon locally, with detailed stats and artwork fetched via PokéAPI. Training achieved ~93% validation accuracy, optimized with quantization for speed and memory efficiency.",
+      "image": "/pokedex/splash.gif",
+      "gallery": [
+        "/pokedex/splash.gif",
+        "/pokedex/home.png",
+        "/pokedex/capture.gif",
+        "/pokedex/result.png",
+        "/pokedex/pokedex_captured.png",
+        "/pokedex/pokedex_hidden.png"
+      ],
+      "link": "https://github.com/GeryJonathan/Pokedex",
+      "github": null,
+      "youtube": null
+    },
+    {
+      "title": "Bank SUMUT Internship: Data Automation & Dashboard",
+      "category": "Data Science",
+      "tools": [
+        "UiPath RPA",
+        "Python (Dash)",
+        "Power BI",
+        "MySQL",
+        "SQLite"
+      ],
+      "description": "Developed a data visualization and automation system during my internship at PT Bank SUMUT. Built dashboards to monitor daily and monthly banking transactions, and automated ETL processes to ensure accurate, real-time reporting.",
+      "details": "During my internship at Bank SUMUT’s Operational Division (Electronic Channel), I worked on two main projects: (1) automation of data transformation and loading using UiPath, and (2) creation of interactive dashboards to monitor transaction performance. Initially, I built a prototype dashboard using Python Dash for daily transactions, later revised to Power BI for monthly reporting and richer insights. The Power BI dashboard featured multiple pages, including an overview, transaction types, transfers, bill payments, product payments, and unit performance (branch comparison). I also ensured automation of data pipelines using UiPath to maintain accuracy and efficiency, significantly reducing manual work and human errors. This project improved decision-making for management by enabling real-time, accurate, and visually intuitive data monitoring.",
+      "image": "/bank_sumut/main-dashboard.jpg",
+      "gallery": [
+        "/bank_sumut/dash-dashboard.jpg",
+        "/bank_sumut/uipath-process.jpg",
+        "/bank_sumut/powerbi-overview.jpg",
+        "/bank_sumut/powerbi-transfer.jpg",
+        "/bank_sumut/powerbi-billpayment.jpg",
+        "/bank_sumut/powerbi-productpayment.jpg",
+        "/bank_sumut/powerbi-unit.jpg"
+      ],
+      "link": null,
+      "github": null,
+      "youtube": null
     },
     {
       "title": "Beijing Air Quality Dashboard",
-      "tools": ["Python", "Streamlit"],
-      "description": "Analyzed Beijing air quality data and built a Streamlit dashboard for visualization and insights.",
-      "image": "/project6.jpg",
-      "link": "https://github.com/GeryJonathan/Beijing-Air-Quality-Dashboard---Streamlit"
+      "category": "Data Science",
+      "tools": [
+        "Python",
+        "Pandas",
+        "Matplotlib",
+        "Seaborn",
+        "Streamlit"
+      ],
+      "description": "A data analysis and visualization project on Beijing Air Quality data. It aggregates, cleans, wrangles, and visualizes the dataset to answer key environmental questions.",
+      "details": "This project analyzes Beijing Air Quality data by aggregating, cleaning, wrangling, and visualizing it in Python. Important exploratory questions include temporal changes in PM2.5 levels, correlations between pollutants, and identifying stations with the highest/lowest pollution. The Streamlit dashboard makes results interactive for end users.",
+      "image": "/streamlit/dashboard.png",
+      "gallery": [
+        "/streamlit/notebook.png"
+      ],
+      "link": "https://beijingair.streamlit.app/",
+      "github": "https://github.com/GeryJonathan/Beijing-Air-Quality-Dashboard---Streamlit",
+      "youtube": null
     },
     {
-      "title": "Cardiovascular Disease Analysis",
-      "tools": ["Python", "Pandas", "Matplotlib"],
-      "description": "Analyzed 70,000 patient records to understand key health factors influencing cardiovascular disease.",
-      "image": "/project7.jpg"
+      "title": "Rujak (Rutin Pajak)",
+      "category": "Web Development",
+      "tools": [
+        "Laravel",
+        "MySQL"
+      ],
+      "description": "A web-based solution to simplify and encourage regular tax payments for the community, developed for the Pekan Kreativitas Mahasiswa (PKM) competition.",
+      "details": "Rujak, or 'Rutin Pajak,' is an innovative solution aimed at making tax payments more engaging and accessible. Built with Laravel and MySQL, the platform was created as part of the Pekan Kreativitas Mahasiswa (PKM) competition. It supports key features such as quiz creation and completion to increase awareness, and a comment section to foster user interaction. My role as Backend Engineer involved database design and implementing core CRUD functionalities while ensuring scalability and maintainability.",
+      "image": "/rujak/rujak.png",
+      "gallery": [
+        "/rujak/quiz.png",
+        "/rujak/quiz_edit.png",
+        "/rujak/comment.png"
+      ],
+      "link": "https://github.com/erligurning03/WebPajakPKM",
+      "github": null,
+      "youtube": null
     },
     {
-      "title": "Boston Housing Price Prediction",
-      "tools": ["Python", "Scikit-learn"],
-      "description": "Built and fine-tuned ML models for predicting housing prices with a low RMSE of 3.278.",
-      "image": "/project8.jpg"
+      "title": "Thesis Management Website",
+      "category": "Web Development",
+      "image": "thesis_management/skripsi.png",
+      "description": "A web-based platform built with Laravel and MySQL to digitalize and streamline the thesis management process for students and faculty.",
+      "details": "This project was developed as part of a university team assignment for the Database Management course. I led a 6-person team over a 3-month period, overseeing requirements gathering, workflow analysis, and stakeholder engagement. We designed a secure and optimized database system with SQL functions and procedures, ensuring efficient data handling and reducing administrative overhead. I contributed to both backend and frontend development using the Laravel framework, enabling seamless user experience for students, staff, and faculty members. The system supports workflows from initial proposal submission to final defense, making thesis administration more transparent and organized.",
+      "tools": [
+        "Laravel",
+        "PHP",
+        "MySQL",
+        "SQL Procedures",
+        "Bootstrap",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "gallery": [
+        "thesis_management/login.png",
+        "thesis_management/home.png",
+        "thesis_management/mahasiswa.png",
+        "thesis_management/sempro.png",
+        "thesis_management/daftar_dosen.png",
+        "thesis_management/relation_table.png"
+      ],
+      "link": "https://github.com/GeryJonathan/Manajemen-Tugas-Akhir",
+      "github": null,
+      "youtube": null
     },
     {
-      "title": "Rujak (Web Development)",
-      "tools": ["Laravel", "MySQL"],
-      "description": "Developed backend features for a tax payment app, including CRUD, quiz, and comment system.",
-      "image": "/project9.jpg",
-      "link": "https://github.com/erligurning03/WebPajakPKM"
+      "title": "Demenion – Dementia Companion",
+      "category": "UI/UX",
+      "image": "uiux/demenion.png",
+      "description": "Finalist project for GEMASTIK 2024 UX Design Competition. Demenion is a mobile application designed to support caregivers in providing better care for people with dementia, while offering education and early detection features.",
+      "details": "Demenion (Dementia Companion) is a UX design project developed for the GEMASTIK 2024 competition (UX Design Division, Finalist). It helps caregivers manage the care of people with dementia (ODD) through early detection tools, real-time monitoring with smartwatch and smart tags, and access to resources from Alzheimer’s Indonesia (ALZI). Key features include health monitoring, fall detection, geofencing, meaningful activities, caregiver community support, and dementia education through webinars and articles. The app achieved an SUS score of 88.75 (Grade A, Excellent), indicating strong usability and user acceptance.",
+      "tools": [
+        "Figma",
+        "Design Thinking",
+        "System Usability Scale (SUS)"
+      ],
+      "link": "https://www.figma.com/proto/O8eoWV3den7HpHAU5k8GqG/Prototype-Gemastik-2024-(Copy)?page-id=3289%3A27822&node-id=3289-29206&starting-point-node-id=3289%3A29144",
+      "github": null,
+      "youtube": "https://drive.google.com/file/d/10YzDh_9_r7nx4IduXJwMW38tB_nKTFSL/view?usp=sharing"
     },
     {
-      "title": "InFinIt (UI/UX Design)",
-      "tools": ["Figma"],
-      "description": "Mobile app prototype aligned with UN SDGs, designed for Gemastik 2023 competition.",
-      "image": "/project10.jpg",
-      "link": "https://www.figma.com/proto/Ipa9Ce5BaHzEDQyTsobK77/InFinIt"
+      "title": "InFinIt",
+      "category": "UI/UX",
+      "image": "uiux/infinIt.png",
+      "description": "A mobile application design created for Gemastik 2023, aligning with the Sustainable Development Goals (SDGs) through a user-centric design thinking approach.",
+      "details": "InFinIt was developed as part of the Gemastik 2023 competition, focusing on addressing SDGs with innovative solutions. The design process followed design thinking methodologies to ensure a comprehensive and user-centric solution. InFinIt aims to provide positive societal impact by addressing specific sustainable development challenges.",
+      "tools": [
+        "Figma",
+        "Design Thinking"
+      ],
+      "link": "https://www.figma.com/proto/Ipa9Ce5BaHzEDQyTsobK77/InFinIt?page-id=0%3A1&type=design&node-id=35-4214&viewport=513%2C631%2C0.28&t=EHQafr6Oq3VIBQQV-1&scaling=scale-down&starting-point-node-id=35%3A4214&mode=design",
+      "github": null,
+      "youtube": null
     },
     {
-      "title": "Ekonomi Plus (UI/UX Design)",
-      "tools": ["Figma"],
-      "description": "Prototype app for economic empowerment and financial management aimed at reducing poverty.",
-      "image": "/project11.jpg",
-      "link": "https://www.figma.com/proto/7oZdLJTImyvImAtcLnC1qZ/DI-TUBES-KEL-3"
+      "title": "Ekonomi Plus",
+      "category": "UI/UX",
+      "image": "uiux/eko.png",
+      "description": "An application design targeting Sustainable Development Goal 1 (No Poverty), aimed at economic empowerment and financial management for underprivileged communities.",
+      "details": "Ekonomi Plus is designed to contribute toward eradicating poverty in Indonesia by supporting economic empowerment, distributing social assistance, and managing finances of underprivileged communities. By aligning with SDG 1, the app’s ultimate goal is to reduce poverty rates and improve financial stability for those in need.",
+      "tools": [
+        "Figma",
+        "UI/UX Design"
+      ],
+      "link": "https://www.figma.com/proto/7oZdLJTImyvImAtcLnC1qZ/DI-TUBES-KEL-3?page-id=5%3A2&type=design&node-id=341-1783&viewport=3395%2C5615%2C1.79&t=h22itS0afVcLcZP1-1&scaling=scale-down&starting-point-node-id=245%3A467&mode=design",
+      "github": null,
+      "youtube": null
     }
   ]
 }
