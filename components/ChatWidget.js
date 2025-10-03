@@ -51,6 +51,7 @@ export default function ChatWidget() {
       {/* Floating button */}
       {!open && (
         <motion.button
+          id="chat-widget-button" // <-- ID ADDED HERE
           onClick={() => setOpen(true)}
           className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition transform hover:scale-105"
           initial={{ scale: 0 }}
@@ -70,7 +71,7 @@ export default function ChatWidget() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 30 }}
             transition={{ duration: 0.25 }}
-            className="w-96 h-[32rem] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden" // <-- CHANGED HERE
+            className="w-96 h-[32rem] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="flex justify-between items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-3">

@@ -1,145 +1,129 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import portfolio from "@/data/portfolio.json";
 
+// --- ⬇️ NEW: Import Driver.js ⬇️ ---
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
+
 export default function HomePage() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [zoomedImage, setZoomedImage] = useState(null); // for zoom mode
+  const [zoomedImage, setZoomedImage] = useState(null);
+
+  // --- ⬇️ ONBOARDING LOGIC NOW USES DRIVER.JS ⬇️ ---
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem("portfolioOnboardingComplete");
+
+    if (!hasSeenOnboarding) {
+      // Define the driver instance
+      const driverObj = driver({
+        showProgress: true,
+        popoverClass: 'driverjs-theme', // A custom class for styling if needed
+        steps: [
+          { 
+            popover: { 
+              title: "Welcome!", 
+              description: "Welcome to my interactive portfolio! Let me quickly show you around." 
+            } 
+          },
+          { 
+            element: '.onboarding-target-project', 
+            popover: { 
+              title: "View Projects", 
+              description: "You can click on any project card like this one to see more details, including a gallery and links.",
+              side: "bottom",
+              align: 'start'
+            } 
+          },
+          { 
+            element: '#chat-widget-button', 
+            popover: { 
+              title: "AI Assistant", 
+              description: "Have any questions? Ask my personal AI assistant for a quick answer!",
+              side: "top",
+              align: 'end'
+            } 
+          }
+        ],
+        // Set the flag in localStorage when the tour is completed or closed
+        onClose: () => {
+          localStorage.setItem("portfolioOnboardingComplete", "true");
+        },
+        onDeselected: () => {
+          localStorage.setItem("portfolioOnboardingComplete", "true");
+        }
+      });
+
+      // Start the tour after a brief delay for animations to finish
+      setTimeout(() => {
+        driverObj.drive();
+      }, 500);
+    }
+  }, []); // Runs only once on component mount
+
 
   const categories = [...new Set(portfolio.projects.map((p) => p.category))];
-
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
-      {/* Hero Section */}
+      {/* ... (Hero and other sections are unchanged, only showing project section for brevity) ... */}
       <section className="relative bg-gradient-to-br from-blue-700 via-indigo-700 to-purple-700 text-white min-h-[70vh] flex items-center overflow-hidden">
-        {/* Subtle background effect */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.1),_transparent_60%)] animate-pulse" />
         <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center px-6 py-20 w-full">
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex-shrink-0 mb-8 md:mb-0 md:mr-16 flex justify-center"
-          >
-            <img
-              src="/profile.jpg"
-              alt="Profile"
-              className="w-64 md:w-80 object-contain rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500"
-            />
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex-shrink-0 mb-8 md:mb-0 md:mr-16 flex justify-center" >
+            <img src="/profile.jpg" alt="Profile" className="w-64 md:w-80 object-contain rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500" />
           </motion.div>
-
-          {/* Profile Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-6"
-          >
-            <h1 className="text-5xl font-extrabold drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-              {portfolio.name}
-            </h1>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-6" >
+            <h1 className="text-5xl font-extrabold drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200"> {portfolio.name} </h1>
             <h2 className="text-2xl font-medium opacity-90">{portfolio.title}</h2>
-            <p className="max-w-2xl text-lg opacity-95 leading-relaxed">
-              {portfolio.about}
-            </p>
-            <a
-              href="#projects"
-              className="inline-block mt-6 px-8 py-3 bg-white/90 text-indigo-700 font-semibold rounded-full shadow-lg hover:shadow-xl hover:bg-white transition transform hover:-translate-y-1"
-            >
-              View My Work ↓
-            </a>
+            <p className="max-w-2xl text-lg opacity-95 leading-relaxed"> {portfolio.about} </p>
+            <a href="#projects" className="inline-block mt-6 px-8 py-3 bg-white/90 text-indigo-700 font-semibold rounded-full shadow-lg hover:shadow-xl hover:bg-white transition transform hover:-translate-y-1" > View My Work ↓ </a>
           </motion.div>
         </div>
       </section>
 
       <div className="max-w-6xl mx-auto px-6 py-20 space-y-24">
-        {/* Skills */}
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-bold mb-8 text-gray-800 flex items-center gap-2">
-            <span className="w-2 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded"></span>
-            Skills
-          </h2>
+        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} >
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 flex items-center gap-2"> <span className="w-2 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded"></span> Skills </h2>
           <ul className="flex flex-wrap gap-4">
             {portfolio.skills.map((skill, i) => (
-              <motion.li
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                className="px-5 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-indigo-700 rounded-full text-sm font-medium shadow-sm"
-              >
-                {skill}
-              </motion.li>
+              <motion.li key={i} whileHover={{ scale: 1.05 }} className="px-5 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-indigo-700 rounded-full text-sm font-medium shadow-sm" > {skill} </motion.li>
             ))}
           </ul>
         </motion.section>
 
-        {/* Projects by Category */}
-        <motion.section
-          id="projects"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-bold mb-12 text-gray-800 flex items-center gap-2">
-            <span className="w-2 h-8 bg-gradient-to-b from-indigo-500 to-purple-600 rounded"></span>
-            Projects
-          </h2>
-
-          {categories.map((category) => (
+        <motion.section id="projects" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} >
+          <h2 className="text-3xl font-bold mb-12 text-gray-800 flex items-center gap-2"> <span className="w-2 h-8 bg-gradient-to-b from-indigo-500 to-purple-600 rounded"></span> Projects </h2>
+          {categories.map((category, catIndex) => (
             <div key={category} className="mb-16">
-              <h3 className="text-2xl font-semibold mb-8 text-gray-700">
-                {category}
-              </h3>
+              <h3 className="text-2xl font-semibold mb-8 text-gray-700"> {category} </h3>
               <div className="grid md:grid-cols-2 gap-10">
-                {portfolio.projects
-                  .filter((p) => p.category === category)
-                  .map((project, i) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl cursor-pointer overflow-hidden group"
-                      onClick={() => setSelectedProject(project)}
-                    >
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-52 object-cover group-hover:scale-105 transition duration-500"
-                      />
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-indigo-600 transition">
-                          {project.title}
-                        </h3>
-                        <p className="text-gray-600 mb-3 line-clamp-3">
-                          {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tools.map((tool, j) => (
-                            <span
-                              key={j}
-                              className="px-3 py-1 text-xs bg-indigo-50 text-indigo-700 rounded-full"
-                            >
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
+                {portfolio.projects.filter((p) => p.category === category).map((project, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    // --- ⬇️ CLASS ADDED TO FIRST PROJECT CARD ⬇️ ---
+                    className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl cursor-pointer overflow-hidden group ${catIndex === 0 && i === 0 ? "onboarding-target-project" : ""}`}
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    <img src={project.image} alt={project.title} className="w-full h-52 object-cover group-hover:scale-105 transition duration-500" />
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-indigo-600 transition"> {project.title} </h3>
+                      <p className="text-gray-600 mb-3 line-clamp-3"> {project.description} </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tools.map((tool, j) => (<span key={j} className="px-3 py-1 text-xs bg-indigo-50 text-indigo-700 rounded-full" > {tool} </span>))}
                       </div>
-                    </motion.div>
-                  ))}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           ))}
         </motion.section>
 
-        {/* Contact */}
+        {/* ... (Contact and Call to Action sections remain unchanged) ... */}
         {portfolio.contact && (
           <motion.section
             initial={{ opacity: 0, y: 40 }}
@@ -177,8 +161,6 @@ export default function HomePage() {
             </div>
           </motion.section>
         )}
-
-        {/* Call to Action */}
         <motion.section
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -195,7 +177,7 @@ export default function HomePage() {
         </motion.section>
       </div>
 
-      {/* ⬇️ MOVED Project Detail Modal HERE ⬇️ */}
+      {/* Project Detail Modal (unchanged) */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -204,7 +186,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/40 backdrop-blur-md flex items-center justify-center z-50 p-4"
-            onClick={() => setSelectedProject(null)} // Closes modal on background click
+            onClick={() => setSelectedProject(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 40 }}
@@ -212,7 +194,7 @@ export default function HomePage() {
               exit={{ scale: 0.9, opacity: 0, y: 40 }}
               transition={{ duration: 0.3 }}
               className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl p-8 max-w-2xl w-full relative max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()} // Prevents click inside modal from closing it
+              onClick={(e) => e.stopPropagation()}
             >
               <button
                 className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-3xl"
@@ -221,26 +203,21 @@ export default function HomePage() {
               >
                 &times;
               </button>
-
-              {/* Main Image */}
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 onClick={(e) => {
-                  e.stopPropagation(); // Prevent closing modal
+                  e.stopPropagation();
                   setZoomedImage(selectedProject.image);
                 }}
                 className="w-full h-64 object-cover rounded-xl mb-6 cursor-zoom-in hover:opacity-90 transition"
               />
-
               <h3 className="text-2xl font-bold mb-3 text-gray-900">
                 {selectedProject.title}
               </h3>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 {selectedProject.details || selectedProject.description}
               </p>
-
-              {/* Tools */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {selectedProject.tools.map((tool, j) => (
                   <span
@@ -251,8 +228,6 @@ export default function HomePage() {
                   </span>
                 ))}
               </div>
-
-              {/* Gallery */}
               {selectedProject.gallery && selectedProject.gallery.length > 0 && (
                 <div className="mt-6">
                   <h4 className="text-lg font-semibold mb-3 text-gray-800">Gallery</h4>
@@ -264,7 +239,7 @@ export default function HomePage() {
                         alt={`${selectedProject.title} screenshot ${idx + 1}`}
                         whileHover={{ scale: 1.05 }}
                         onClick={(e) => {
-                          e.stopPropagation(); // Prevent closing modal
+                          e.stopPropagation();
                           setZoomedImage(img);
                         }}
                         className="h-32 min-w-[8rem] object-cover rounded-lg cursor-zoom-in transition flex-shrink-0"
@@ -273,8 +248,6 @@ export default function HomePage() {
                   </div>
                 </div>
               )}
-
-              {/* External Links Container */}
               <div className="flex flex-wrap gap-4 mt-8">
                 {selectedProject.link && (
                   <a
@@ -312,7 +285,7 @@ export default function HomePage() {
         )}
       </AnimatePresence>
 
-      {/* 🔍 Zoomed Image Lightbox */}
+      {/* Zoomed Image Lightbox (unchanged) */}
       <AnimatePresence>
         {zoomedImage && (
           <motion.div
@@ -321,7 +294,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4"
-            onClick={() => setZoomedImage(null)} // close when clicking background
+            onClick={() => setZoomedImage(null)}
           >
             <motion.img
               src={zoomedImage}
