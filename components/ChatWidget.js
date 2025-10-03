@@ -51,7 +51,7 @@ export default function ChatWidget() {
       {/* Floating button */}
       {!open && (
         <motion.button
-          id="chat-widget-button" // <-- ID ADDED HERE
+          id="chat-widget-button" 
           onClick={() => setOpen(true)}
           className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition transform hover:scale-105"
           initial={{ scale: 0 }}

@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import portfolio from "@/data/portfolio.json";
-
-// --- ⬇️ NEW: Import Driver.js ⬇️ ---
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
 
@@ -12,15 +10,13 @@ export default function HomePage() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [zoomedImage, setZoomedImage] = useState(null);
 
-  // --- ⬇️ ONBOARDING LOGIC NOW USES DRIVER.JS ⬇️ ---
   useEffect(() => {
     const hasSeenOnboarding = localStorage.getItem("portfolioOnboardingComplete");
 
     if (!hasSeenOnboarding) {
-      // Define the driver instance
       const driverObj = driver({
         showProgress: true,
-        popoverClass: 'driverjs-theme', // A custom class for styling if needed
+        popoverClass: 'driverjs-theme', 
         steps: [
           { 
             popover: { 
@@ -47,7 +43,6 @@ export default function HomePage() {
             } 
           }
         ],
-        // Set the flag in localStorage when the tour is completed or closed
         onClose: () => {
           localStorage.setItem("portfolioOnboardingComplete", "true");
         },
@@ -56,12 +51,11 @@ export default function HomePage() {
         }
       });
 
-      // Start the tour after a brief delay for animations to finish
       setTimeout(() => {
         driverObj.drive();
       }, 500);
     }
-  }, []); // Runs only once on component mount
+  }, []); 
 
 
   const categories = [...new Set(portfolio.projects.map((p) => p.category))];
@@ -104,7 +98,6 @@ export default function HomePage() {
                     key={i}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
-                    // --- ⬇️ CLASS ADDED TO FIRST PROJECT CARD ⬇️ ---
                     className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl cursor-pointer overflow-hidden group ${catIndex === 0 && i === 0 ? "onboarding-target-project" : ""}`}
                     onClick={() => setSelectedProject(project)}
                   >
@@ -285,7 +278,7 @@ export default function HomePage() {
         )}
       </AnimatePresence>
 
-      {/* Zoomed Image Lightbox (unchanged) */}
+      {/* Zoomed Image Lightbox */}
       <AnimatePresence>
         {zoomedImage && (
           <motion.div
